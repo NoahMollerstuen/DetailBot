@@ -19,9 +19,9 @@ class Client(discord.Client):
         weekday = datetime.datetime.now().weekday()
         today_data = detail_data[weekday]
         channel_id = today_data["channel_id"]
-        today_users = today_data["user_ids"]
+        today_roles = today_data["role_ids"]
         channel = self.get_channel(channel_id)
-        msg = " ".join([f"<@{u}>" for u in today_users])
+        msg = " ".join([f"<@&{r}>" for r in today_roles])
         msg += " Remember to do your detail tonight!\n"
         msg += random.choice(quotes)
         await channel.send(msg)
